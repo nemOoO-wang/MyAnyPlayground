@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+   
+    "name": "FormatWeeklyReport",
+    "version": "1.0.0",
+    "description": "Auto format weekly report for Shopee/toC",
+   "permissions": ["tabs", "https://jira.shopee.io/*", "https://mail.google.com/*"],
+   "browser_action": {},
+   "background": {
+        "scripts": ["backgroundscript.js"]
+    },
+    "content_scripts": [{
+        "js": [
+            "utils.js",
+            "contentscript.js"
+        ],
+      "matches": ["https://mail.google.com/*"]
+    }]
+}
