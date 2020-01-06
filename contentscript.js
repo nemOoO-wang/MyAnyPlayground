@@ -71,12 +71,14 @@ function requestHandler (request, sender, sendResponse) {
                 // chrome bug? if not call sendResponse function
                 const [tableElement, trElement] = getRangeTableAndTr();
                 if (tableElement && trElement) {
+                    // 👉parse jira list within table
                     const tableBodyElement =tableElement.getElementsByTagName('tbody')[0];
                     list.reverse().forEach((item) => {
                         const tableTrFragment = fragmentFromString(tableItemString(item, 0));
                         tableBodyElement.insertBefore(tableTrFragment, trElement);
                     })
                 } else {
+                    // 👉parse jira list with default format
                     Utils.replaceRange(selectedRange, makeHtmlTemplete(list));
                 }
             }
