@@ -1,19 +1,27 @@
 {
     "manifest_version": 2,
    
-    "name": "FormatWeeklyReport",
+    "name": "ToC学委",
     "version": "1.0.0",
-    "description": "Auto format weekly report for Shopee/toC",
-   "permissions": ["tabs", "https://jira.shopee.io/*", "https://mail.google.com/*"],
-   "browser_action": {},
-   "background": {
+    "description": "Auto format weekly report for Shopee-toC-iOS",
+    "permissions": ["tabs", "https://jira.shopee.io/*", "https://mail.google.com/*"],
+    "browser_action": {
+        "default_icon": { "32": "images/pkgicn.png" }
+    },
+    "background": {
         "scripts": ["backgroundscript.js"]
+    },
+    "icons": {
+        "32": "images/pkgicn.png"
     },
     "content_scripts": [{
         "js": [
             "utils.js",
             "contentscript.js"
         ],
-      "matches": ["https://mail.google.com/*"]
+       "matches": [
+           "https://mail.google.com/*", 
+           "https://docs.google.com/*"
+        ]
     }]
 }

@@ -82,9 +82,12 @@ function getJiraId(selectedHtml) {
 function requestFormatHandler(request, sender, sendResponse) {
     if (request && request.action === 'request-format') {
         const selectedHtml = request.selectedHtml.replace(/(<([^>]+)>)/ig, '');
+        console.log("d", request.selectedHtml)
+        console.log("sel", selectedHtml)
 
         if (/jira:.*/.test(selectedHtml)) {
 
+            console.log("Enter Jira format handle");
             const re = /[A-Z]{1,}-\d{1,5}|#work|#plan|#jql=[^\s]+/g;
             const matches = [];
             while (true) {

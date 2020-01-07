@@ -31,6 +31,7 @@ function requestHandler (request, sender, sendResponse) {
         // add listener to editor
         if (!isAddKeyPressListenerToEditor) {
             focusedElem.addEventListener('keypress', (e) => {
+                console.log("Enter req handle", e.keyCode);
                 if (e.ctrlKey && e.keyCode === 61) {
                     // ctrl +
                     const [tableElement, trElement] = getRangeTableAndTr();
@@ -66,6 +67,7 @@ function requestHandler (request, sender, sendResponse) {
         const selectedRange = Utils.getOperationalRange(focusedElem)
         const originalHtml = Utils.getDocumentFragmentHTML(selectedRange.cloneContents());
 
+        console.log("snd req format msg")
         chrome.runtime.sendMessage(sender.id, { action: 'request-format', selectedHtml: originalHtml }, function (list) {
             if (list && list.length > 0) {
                 // chrome bug? if not call sendResponse function
