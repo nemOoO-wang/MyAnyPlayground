@@ -62,7 +62,6 @@ function requestHandler (request, sender, sendResponse) {
             isAddKeyPressListenerToEditor = true
         }
         
-
         const selectedRange = Utils.getOperationalRange(focusedElem)
         const originalHtml = Utils.getDocumentFragmentHTML(selectedRange.cloneContents());
 
